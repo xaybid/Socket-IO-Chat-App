@@ -1,4 +1,4 @@
-const socket = io('http://localhost:4000')
+const socket = io('https://anonbackend-ye46.onrender.com')
 
 
 const clientsTotal = document.getElementById('clients-total')
