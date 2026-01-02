@@ -6,7 +6,7 @@ const server = app.listen(PORT, () => console.log(`Running server on port ${PORT
 
 const io = require('socket.io')(server)
 
-app.use(express.static(path.join(__dirname, 'public')))
+app.use(express.static(path.join(__dirname, '../frontend')))
 
 let socketsConnected = new Set()
 
