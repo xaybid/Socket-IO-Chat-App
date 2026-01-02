@@ -1,4 +1,10 @@
-const socket = io('https://anonbackend-ye46.onrender.com')
+const socket = io('https://anonbackend-ye46.onrender.com', {
+    transports: ["websocket"],   // 🚫 disable polling
+    upgrade: false,              // 🚫 prevent transport switching
+    reconnection: true,
+    reconnectionAttempts: 5,
+    reconnectionDelay: 1000,
+})
 
 
 const clientsTotal = document.getElementById('clients-total')
