@@ -16,13 +16,19 @@ const io = require('socket.io')(server, {
     cors: {
         origin: "*",
         methods: ["GET", "POST"]
-    }
+    },
+    transports: ["websocket"]
 })
 
 let socketsConnected = new Set()
 
 io.on('connection', (socket) => {
-    console.log(`🟢 Client connected | Socket ID: ${socket.id}`)
+    console.log(`🟢 Connected | ${socket.id} | Transport: ${socket.conn.transport.name}`)
+
+    socket.conn.on("upgrade", () => {
+        console.log(`🔼 Transport upgraded: ${socket.conn.transport.name}`)
+    })
+
 
     socketsConnected.add(socket.id)
     io.emit('clients-total', socketsConnected.size)
